@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Muzammil Salisu Iro</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo">
+    </div>
+    <div class="nav-controls">
+      <button id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+        <i class="fas fa-moon"></i>
+      </button>
+      <div class="hamburger" onclick="toggleMenu(this)">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="products.html">products</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <section id="about" class="about">
+      <div class="about-content">
+        <h1>About Me</h1>
+        <p>
+          Hello! I’m <strong>Muzammil Salisu Iro</strong>, a ND 2 Thirt semester/final year Computer Science student at Federal Collage Of Agrecultural Product, Kano.<br><br>
+          I’m passionate about ADOBE(Videos,Photos and Sound)Editing design and web development. Though I’m just starting out, I enjoy experimenting with new ideas, solving problems, and building things that look good and work even better.<br><br>
+          Outside of tech, I run a Golden brand called <strong>MetricBlockRogo</strong>. It reflects my love for fashion, creativity, and entrepreneurship. I’m always learning and striving to grow as a designer, developer, and brand owner.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function toggleMenu(icon) {
+      icon.classList.toggle("open");
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    }
+
+    // Load saved theme on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    });
+
+    // Highlight active nav link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      const currentPage = window.location.pathname.split("/").pop();
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  </script>
+</body>
+</html>

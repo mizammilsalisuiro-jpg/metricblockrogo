@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo">
+    </div>
+    <div class="nav-controls">
+      <button id="themeToggle" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+      </button>
+      <div class="hamburger" onclick="toggleMenu(this)">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="products.html" class="active">Products</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </header>
+
+  <main>
+    <section id="products" class="products">
+      <h1>Products</h1>
+      <div class="products-grid">
+        <!-- Product Cards -->
+        <div class="product-card">
+          <img src="images/product1.jpg" alt="Hoodie" />
+          <h3>HOODIE</h3>
+          <p>Available in any color! 🔴🔵🟢🟤 Stylish and high-quality.</p>
+          <span class="price">₦14,500</span>
+        </div>
+
+        <div class="product-card">
+          <img src="images/product2.jpg" alt="Joggers" />
+          <h3>JALLABIYA</h3>
+          <p>Available in any color! 🔴🔵🟢🟤 Stylish and high-quality.</p>
+          <span class="price">₦10,500</span>
+        </div>
+
+        <div class="product-card">
+          <img src="images/product3.jpg" alt="Couple's Hoodie Combo" />
+          <h3>SHADDA AND GIZNA</h3>
+          <p>Available in any color! 🔴🔵🟢🟤 Stylish and high-quality.</p>
+          <span class="price">#Affordable price</span>
+        </div>
+
+        <div class="product-card">
+          <img src="images/product4.jpg" alt="Couple's Hoodie Short" />
+          <h3>SHOES</h3>
+          <p>Available in any and size color! 🔴🔵🟢🟤 Stylish and high-quality.</p>
+          <span class="price">₦DM for price</span>
+        </div>
+
+        <div class="product-card">
+          <img src="images/product5.jpg" alt="Cargo Pant" />
+          <h3>CAPS</h3>
+          <p>Available in any Desing and Sizer! 🔴🔵🟢🟤 Stylish and high-quality.</p>
+          <span class="price">₦ 10% Discounts</span>
+        </div>
+
+        <div class="product-card">
+          <img src="images/product6.jpg" alt="Couple's Summer Casual" />
+          <h3>MEN AND LEDIS GLASS</h3>
+          <p>Available in any color! 🔴🔵🟢🟤 Stylish and high-quality.</p>
+          <span class="price">₦Free delivery</span>
+        </div>
+
+        <div class="product-card">
+          <img src="images/product7.jpg" alt="Short Hoodie" />
+          <h3>MEN'S WATCH</h3>
+          <p>Available in any Design! 🔴🔵🟢🟤 Stylish and high-quality.</p>
+          <span class="price">₦DM</span>
+        </div>
+
+        <div class="product-card">
+          <img src="images/product8.jpg" alt="Padded Coat" />
+          <h3>ANY KIND OF PHONE</h3>
+          <p>Available in any color! 🔴🔵🟢🟤 Dubai, Uses And New.</p>
+          <span class="price">₦Call</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function toggleMenu(icon) {
+      icon.classList.toggle("open");
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    });
+
+    // Highlight current nav link
+    const links = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop();
+    links.forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo">
+    </div>
+    <div class="nav-controls">
+      <button id="themeToggle" title="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+      </button>
+      <div class="hamburger" onclick="toggleMenu(this)">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </header>
+
+  <!-- Main Contact Section -->
+  <main>
+    <section id="contact" class="contact">
+      <h1>Contact Me</h1>
+      <p>You can reach me through any of the platforms below:</p>
+
+      <address class="contact-details">
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:mizammilsalisuiro@gmail.com">mizammilsalisuiro@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <a href="tel:+2347010193596">+2347010193596</a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-instagram"></i>
+          <a href="https://instagram.com/muzammil_mubee" target="_blank">@muzammil_mubee</a>
+        </div>
+      </address>
+
+      <div class="map-container">
+        <iframe 
+          src="https://maps.app.goo.gl/4BmGA2tMzYVqw7GU8?g_st=ipc" 
+          width="100%" 
+          height="300" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 Mubee Rogo. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/muzammil_mubee" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" title="Back to Top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleMenu(icon) {
+      icon.classList.toggle("open");
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+
+    const links = document.querySelectorAll('.nav-links a');
+    const currentPage = window.location.pathname.split("/").pop();
+    links.forEach(link => {
+      if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+      }
+    });
+
+    const backToTopBtn = document.getElementById("backToTop");
+    window.onscroll = () => {
+      backToTopBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    };
+    backToTopBtn.onclick = () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const themeToggle = document.getElementById("themeToggle");
+    themeToggle.onclick = () => {
+      const html = document.documentElement;
+      const isDark = html.getAttribute("data-theme") === "dark";
+      html.setAttribute("data-theme", isDark ? "light" : "dark");
+      localStorage.setItem("theme", isDark ? "light" : "dark");
+    };
+
+    window.onload = () => {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    };
+  </script>
+</body>
+</html>
